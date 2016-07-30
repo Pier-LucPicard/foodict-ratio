@@ -9,10 +9,6 @@ describe('<Unit Test>',function(){
       return expect(weight).to.be.a('object');
     });
 
-    it('should include a function named cup_to_weight',function(){
-      return expect(weight.cup_to_weight).to.be.a('function');
-    });
-
   });
 
 });
