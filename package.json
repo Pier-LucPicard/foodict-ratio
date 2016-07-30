@@ -1,0 +1,17 @@
+{
+  "name": "ratio",
+  "version": "1.0.0",
+  "description": "Pier-Luc Picard",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha tests/*.js --reporter spec"
+  },
+  "author": "Pier-Luc Picard",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.4.1",
+    "chai": "^3.5.0",
+    "lodash": "^4.13.1",
+    "mocha": "^2.5.3"
+  }
+}
