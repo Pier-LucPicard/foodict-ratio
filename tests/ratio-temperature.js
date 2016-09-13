@@ -1,44 +1,46 @@
 var expect=require('chai').expect;
 var Ratio=require('./../lib/ratio');
+var _ = require('lodash');
 
 var ratio = new Ratio();
 
 describe('Ratio Temperature',function(){
 
-  it('should converte celcius to kelvin',function(){
-
-    return ratio.converte({value:0,unit:"celcius"},'kelvin').then(function(result){
-      expect(result).to.be.deep.equal({value:273.15,unit:'kelvin'});
+    it('should create a full list of all the supported temperature',function(){
+      return ratio.listByType('temperature').then((list) => {
+        expect(list).to.be.an('array');
+        expect(list.length).to.be.equal(8);
+      })
     });
-  });
 
-  it('should convert celcius to farenheit',function(){
-    return ratio.converte({value:33,unit:"celcius"},'farenheit').then(function(result){
-      expect(result).to.be.deep.equal({value:91.4,unit:'farenheit'});
+    it('should randomly be converted in 100 different unit and still be the same number whit +- 1% of error', function () {
+
+      var originalUnit = 'kelvin';
+      var originalValue = _.random(0,100,true);
+      var recursiveHelper = function(testRatio,index,list){
+        if(index === 0){
+          return ratio.converte(testRatio,originalUnit)
+        }
+        return ratio.converte(testRatio,list[_.random(list.length-1)]).then((interRation)=>{
+          return recursiveHelper(interRation,index-1,list);
+        })
+      }
+
+      return ratio.listByType('temperature')
+      .then((list) => {
+        return _.map(list,'name');
+      })
+      .then((list)=>{
+
+        var testRatio = {value:originalValue,unit:originalUnit};
+        return recursiveHelper(testRatio,100,list).then((finalRatio)=>{
+          expect(_.divide(finalRatio.value,testRatio.value) > 0.9 || _.divide(finalRatio.value,testRatio.value) < 1.1).to.be.true;
+        })
+
+      });
+
+
+
     });
-  });
-
-  it('should throw the correct error if the value is below absolute 0 in kelvin',function(){
-    ratio.converte({value:-10,unit:"kelvin"},'celcius').catch(function(error){
-      expect(error).to.be.a('Error');
-      expect((error).message).to.be.equal('Invalide temperature value');
-    });
-  });
-
-  it('should create a full list of all the supported temperature',function(){
-    return ratio.listTypes().then((list)=>{
-      console.log(list)
-      expect(list).to.be.deep.equal([
-        { name: 'celcius', displayName: 'Celcius', symbole: '°C' },
-        { name: 'farenheit', displayName: 'Farenheit', symbole: '°F' },
-        { name: 'romer', displayName: 'Rømer', symbole: '°Rø' },
-        { name: 'rankine', displayName: 'Rankine', symbole: '°Ra' },
-        { name: 'newton', displayName: 'Newton', symbole: '°N' },
-        { name: 'reaumur', displayName: 'Réaumur', symbole: '°Ré' },
-        { name: 'delisle', displayName: 'Delisle', symbole: '°D' },
-        { name: 'kelvin', displayName: 'Kelvin', symbole: 'K' }
-      ]);
-    })
-  })
 
 });
