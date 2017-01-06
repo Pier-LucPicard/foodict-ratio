@@ -2,7 +2,7 @@ var expect=require('chai').expect;
 var Ratio=require('./../lib/ratio');
 var _ = require('lodash');
 
-var ratio = new Ratio();
+var ratio = Ratio();
 
 describe('Ratio Volume',function(){
 
