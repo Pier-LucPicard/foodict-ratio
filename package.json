@@ -4,7 +4,7 @@
   "description": "Pier-Luc Picard",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha tests/*.js --reporter spec",
+    "test": " eslint --ext .js lib; ./node_modules/.bin/mocha tests/*.js --reporter spec",
     "lint": "eslint --ext .js lib"
   },
   "author": "Pier-Luc Picard",

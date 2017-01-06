@@ -12,6 +12,7 @@ module.exports = {
     'no-unused-vars': 'off',
     'comma-dangle': 'off',
     'no-console': 'off',
-    'object-curly-spacing': 'off'
+    'object-curly-spacing': 'off',
+    'max-len': ["error", 200]
   }
 };
