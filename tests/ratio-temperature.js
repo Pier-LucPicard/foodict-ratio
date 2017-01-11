@@ -6,6 +6,10 @@ var ratio = Ratio();
 
 describe('Ratio Temperature',function(){
 
+  before(() => {
+    return ratio.load('lib/units');
+  })
+
     it('should create a full list of all the supported temperature',function(){
       return ratio.listByType('temperature').then((list) => {
         expect(list).to.be.an('array');

@@ -1,19 +1,26 @@
-var expect=require('chai').expect;
-var Ratio=require('./../lib/ratio');
-var _ = require('lodash');
+'use strict';
 
-var ratio = Ratio();
+const expect = require('chai').expect;
+const r = require('./../lib/ratio');
+const _ = require('lodash');
 
-describe('Ratio Volume',function(){
+const ratio = r();
 
-  it('should create a full list of all the supported volume',function(){
-    return ratio.listByType('volume').then((list) => {
+describe('Ratio Volume', () => {
+
+  before(() => {
+    return ratio.load('lib/units');
+  })
+
+  it('should create a full list of all the supported volume', () => {
+    return ratio.listByType('volume')
+    .then((list) => {
       expect(list).to.be.an('array');
       expect(list.length).to.be.equal(18);
     })
   });
 
-  it('should randomly be converted in 100 different unit and still be the same number whit +- 1% of error', function () {
+  it('should randomly be converted in 100 different unit and still be the same number whit +- 1% of error', () => {
 
     var originalUnit;
     var originalValue = _.random(0,100,true);
@@ -36,11 +43,9 @@ describe('Ratio Volume',function(){
       var testRatio = {value:originalValue,unit:originalUnit};
       return recursiveHelper(testRatio,100,list).then((finalRatio)=>{
         expect(_.divide(finalRatio.value,testRatio.value) > 0.9 || _.divide(finalRatio.value,testRatio.value) < 1.1).to.be.true;
-      })
+      });
 
     });
-
-
 
   });
 
