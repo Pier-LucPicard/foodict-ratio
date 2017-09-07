@@ -11,9 +11,10 @@ describe('Loader test', () => {
 
   it('should load the files', () => {
 
-    return loader('lib/units',ratio).then((res) => {
-      console.log(ratio);
-    })
+    return loader('lib/units', ratio)
+      .then((res) => {
+        console.log(ratio);
+      });
   });
 
 });
