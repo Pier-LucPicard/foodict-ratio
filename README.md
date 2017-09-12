@@ -34,7 +34,8 @@ List all the unit of a specific type
 [{
     name: 'millilitre',
     displayName: 'Mililitre',
-    symbole: 'ml'
+    symbole: 'ml',
+    type: 'volume'
 }]
 ```
 
@@ -43,7 +44,7 @@ List all the unit of a specific type
 List all the available unit type
 ```
 [
-    'volume', 'temperature'
+    'volume', 'temperature', 'weight'
 ]
 ```
 
@@ -65,4 +66,8 @@ npm run-script lint
 
 # run unit tests
 npm test
+
+# run watchin tests
+npm run watch-test
+
 ```
