@@ -14,7 +14,7 @@ test('Should return a function', t => {
 test('Should export some specific public interface and they are all function', t => {
 
   const publicInterface = index();
-  expect(_.keys(publicInterface)).to.be.deep.equal(['listTypes', 'listAll', 'listByType', 'converte', 'add']);
+  expect(_.keys(publicInterface)).to.be.deep.equal(['listTypes', 'listAll', 'listByType','find', 'converte', 'add']);
   _.each(publicInterface, (interfaceFunction) => expect(interfaceFunction).to.be.a('function'));
   t.pass();
 });
