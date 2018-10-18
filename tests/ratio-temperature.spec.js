@@ -1,6 +1,6 @@
 'use strict';
 const test = require('ava');
-const expect = require('chai').expect;
+const {expect} = require('chai');
 const _ = require('lodash');
 
 const Ratio=require('../lib/ratio');

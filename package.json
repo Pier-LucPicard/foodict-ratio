@@ -11,15 +11,16 @@
   "author": "Pier-Luc Picard",
   "license": "MIT",
   "dependencies": {
-    "lodash": "^4.17.10"
+    "lodash": "^4.17.11"
   },
   "devDependencies": {
-    "ava": "^0.22.0",
-    "chai": "^3.5.0",
-    "eslint": "^3.19.0",
-    "eslint-config-airbnb": "^6.2.0",
-    "eslint-config-airbnb-base": "^11.3.2",
-    "mocha": "^2.5.3"
+    "ava": "^0.25.0",
+    "chai": "^4.2.0",
+    "eslint": "^5.7.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "mocha": "^5.2.0"
   },
   "pre-commit": [
     "lint",

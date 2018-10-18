@@ -1,6 +1,6 @@
 'use strict';
 const test = require('ava');
-const expect = require('chai').expect;
+const {expect} = require('chai');
 const _ = require('lodash');
 
 const index = require('../index');
@@ -48,4 +48,16 @@ test('The listByType should return an empty array if the unit type is not good',
   expect(publicInterface.listByType('random').length).to.be.equal(0);
   expect(publicInterface.listByType('random')).to.be.deep.equal([]);
   t.pass();
+});
+
+test('Should converte only unit of the same type', t => {
+  const publicInterface = index();
+  let testRatio = {value:1,unit:'kelvin'};
+  try{
+    publicInterface.converte(testRatio,'ounce')
+    throw new Error('Should not be this');
+  } catch(err) {
+    expect(err.message).to.equal('Missmatch of type in conversion.  Cannot convert temperature to weight');
+    t.pass();
+  }
 });
