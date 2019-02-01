@@ -3,10 +3,15 @@
   "version": "1.0.0",
   "description": "Pier-Luc Picard",
   "main": "index.js",
+  "homepage": "https://pier-lucpicard.github.io/ratio/",
   "scripts": {
     "test": "ava ./tests/*.spec.js",
     "watch-test": "ava ./tests/*.spec.js --watch",
     "lint": "eslint --ext .js lib"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/Pier-LucPicard/ratio.git"
   },
   "author": "Pier-Luc Picard",
   "license": "MIT",
