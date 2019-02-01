@@ -1,9 +1,9 @@
 {
   "name": "foodict-ratio",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Pier-Luc Picard",
   "main": "index.js",
-  "homepage": "https://pier-lucpicard.github.io/ratio/",
+  "homepage": "https://pier-lucpicard.github.io/foodict-ratio/",
   "scripts": {
     "test": "ava ./tests/*.spec.js",
     "watch-test": "ava ./tests/*.spec.js --watch",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type" : "git",
-    "url" : "https://github.com/Pier-LucPicard/ratio.git"
+    "url" : "https://github.com/Pier-LucPicard/foodict-ratio.git"
   },
   "author": "Pier-Luc Picard",
   "license": "MIT",
