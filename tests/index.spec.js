@@ -37,7 +37,7 @@ test('The listType should list all the different unit type that are loaded', t =
 
   const publicInterface = index();
   expect(publicInterface.listTypes().length).to.be.not.equal(0);
-  expect(publicInterface.listTypes()).to.be.deep.equal(['volume','temperature','weight']);
+  expect(publicInterface.listTypes().sort()).to.be.deep.equal(['misc','temperature','volume','weight']);
 
   t.pass();
 });
