@@ -1,2 +1,1 @@
-
-module.exports = require("./lib/ratio");
+module.exports = require('./lib');
