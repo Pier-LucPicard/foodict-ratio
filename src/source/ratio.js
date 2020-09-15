@@ -64,13 +64,24 @@ class Ratio {
     });
   }
 
-  find(type, key) {
-    return this.ratio[type][key].format();
+  find(key) {
+    return _.find(this.list(), (e) => e.key === key);
   }
 
-  converte(value, unitKey, targetUnitKey) {
-    const fromUnitFormatted = _.find(this.list(), (e) => e.key === unitKey);
-    const toUnitFormatted = _.find(this.list(), (e) => e.key === targetUnitKey);
+  converte(value, unitKey, targetUnitKey, type=undefined) {
+    let fromUnitFormatted;
+    let toUnitFormatted;
+    if(!type){
+      fromUnitFormatted = _.find(this.list(), (e) => e.key === unitKey);
+      toUnitFormatted = _.find(this.list(), (e) => e.key === targetUnitKey);
+    }else{
+      if(!this.ratio[type]){
+        throw new Error(`Unknown unit type ${type}.`);
+
+      }
+      fromUnitFormatted = this.ratio[type][unitKey].format()
+      toUnitFormatted= this.ratio[type][targetUnitKey].format()
+    }
 
     if (!fromUnitFormatted || !toUnitFormatted) {
       throw new Error(`Unknown unit ${unitKey} or ${targetUnitKey}.`);
@@ -84,8 +95,8 @@ class Ratio {
       throw new Error(`Unknown type in conversion.  Cannot convert ${fromUnitFormatted.type} type`);
     }
 
-    const fromUnit = this.ratio[fromUnitFormatted.type][fromUnitFormatted.key];
-    const toUnit = this.ratio[toUnitFormatted.type][toUnitFormatted.key];
+    const fromUnit = this.ratio[type || fromUnitFormatted.type][fromUnitFormatted.key];
+    const toUnit = this.ratio[type ||toUnitFormatted.type][toUnitFormatted.key];
 
     unitType.validate(value, fromUnit);
     const baseValue = fromUnit.converteToBase(value);
