@@ -1,31 +1,37 @@
 {
   "name": "foodict-ratio",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "Pier-Luc Picard",
   "main": "index.js",
   "homepage": "https://pier-lucpicard.github.io/foodict-ratio/",
   "scripts": {
-    "test": "ava ./tests/*.spec.js",
-    "watch-test": "ava ./tests/*.spec.js --watch",
-    "lint": "eslint --ext .js lib"
+    "test": "ava",
+    "coverage": "nyc --reporter=lcov npm run test",
+    "watch-test": "ava --watch",
+    "lint": "eslint --ext .js .",
+    "prettier": "prettier --write \"**/*.js\""
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/Pier-LucPicard/foodict-ratio.git"
+    "type": "git",
+    "url": "https://github.com/Pier-LucPicard/foodict-ratio.git"
   },
   "author": "Pier-Luc Picard",
   "license": "MIT",
   "dependencies": {
-    "lodash": "^4.17.11"
+    "lodash": "4.17.19"
   },
   "devDependencies": {
-    "ava": "^0.25.0",
-    "chai": "^4.2.0",
-    "eslint": "^5.7.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.14.0",
-    "mocha": "^5.2.0"
+    "@babel/eslint-parser": "7.11.5",
+    "@babel/plugin-proposal-class-properties": "7.10.4",
+    "ava": "3.10.1",
+    "chai": "4.2.0",
+    "eslint": "7.9.0",
+    "eslint-config-prettier": "2.10.0",
+    "eslint-plugin-import": "2.20.1",
+    "eslint-plugin-prettier": "2.7.0",
+    "mocha": "8.0.1",
+    "nyc": "15.1.0",
+    "prettier": "2.0.5"
   },
   "pre-commit": [
     "lint",
