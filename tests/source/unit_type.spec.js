@@ -3,9 +3,9 @@
 const { expect } = require('chai');
 const test = require('ava');
 
-const UnitType = require('../../lib/source/unit_type');
-const Unit = require('../../lib/source/unit');
-const Validator = require('../../lib/source/validator');
+const UnitType = require('../../src/source/unit_type');
+const Unit = require('../../src/source/unit');
+const Validator = require('../../src/source/validator');
 
 test('UnitType should be a constructor', (t) => {
   new UnitType();

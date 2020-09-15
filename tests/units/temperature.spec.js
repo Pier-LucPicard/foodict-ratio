@@ -3,7 +3,7 @@ const test = require('ava');
 const { expect } = require('chai');
 const _ = require('lodash');
 
-const ratio = require('../../lib');
+const ratio = require('../../src');
 
 test('should create a full list of all the supported temperature', (t) => {
   const list = ratio.list('temperature');

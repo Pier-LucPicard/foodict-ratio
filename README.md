@@ -77,4 +77,4 @@ registerUnit([unit_1, unit_2])
 ### `listTypes()`
 ### `list([type])`
 ### `find(type, key)`
-#### `converte(value, unitKeyFrom, targetUnitKey)`
+### `converte(value, unitKeyFrom, targetUnitKey)`

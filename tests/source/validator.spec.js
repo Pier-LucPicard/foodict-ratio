@@ -3,7 +3,7 @@
 const { expect } = require('chai');
 const test = require('ava');
 
-const Validator = require('../../lib/source/validator');
+const Validator = require('../../src/source/validator');
 
 test('Validator should be a constructor', (t) => {
   new Validator();

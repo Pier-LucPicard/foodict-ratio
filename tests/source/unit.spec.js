@@ -3,7 +3,7 @@
 const { expect } = require('chai');
 const test = require('ava');
 
-const Unit = require('../../lib/source/unit');
+const Unit = require('../../src/source/unit');
 
 test('Unit should be a constructor', (t) => {
   new Unit();
