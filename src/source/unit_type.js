@@ -10,10 +10,9 @@ function validateIsOfType(toValidate, constructor, message) {
 }
 
 class UnitType {
-  #name = '';
-  #validator = [];
   constructor(name = '') {
-    this.#name = name;
+    this.name = name;
+    this.validator = [];
   }
 
   addUnit(unit) {
@@ -22,13 +21,10 @@ class UnitType {
     _.set(this, unit.key, unit);
   }
 
-  get name() {
-    return this.#name;
-  }
   addValidator(validatorFunction) {
     validateIsOfType(validatorFunction, Validator, 'Expect the parameter of the addValidator function to be of type Validator');
 
-    this.#validator.push(validatorFunction);
+    this.validator.push(validatorFunction);
   }
 
   list() {
@@ -47,7 +43,7 @@ class UnitType {
   validate(value, unit) {
     validateIsOfType(unit, Unit, 'Expect the parameter of the validate function to be of type Unit');
 
-    _.each(this.#validator, (validator) => {
+    _.each(this.validator, (validator) => {
       validator.validate(value, unit);
     });
   }
